@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Learning Closure</h1>
+        <script>
+/*
+
+This is lexical scop and also in the LS never share the brother property each other. So, i implement the 
+closure for sharing property and qould be executable
+            function init() {
+                let name = "This lexical scope learning";
+                function displayName() {
+                    console.log(name);
+                }
+                displayName();
+            }
+            init();
+ */
+
+            function init() {
+                let name = "I want to see the closure";
+                function displayName () {
+                    console.log(name)
+                }
+                return displayName;
+            }
+            const myName = init();
+            myName();
+
+
+
+        </script>
+        <button id="orange">Orange</button>
+        <button id="red">Red</button>
+        
+    </body>
+    <script> 
+   
+        // document.getElementById("orange").onclick = function()  {
+        //     document.body.style.backgroundColor =`orange`
+
+        // } 
+        // document.getElementById("red").onclick = function()  {
+        //     document.body.style.backgroundColor =`red`
+
+        // }
+
+        function coloHandler(color) {
+            //document.body.style.backgroundColor =`${color}`
+            return function() {
+                document.body.style.backgroundColor= `${color}`
+            }
+        }
+        document.getElementById("orange").onclick = coloHandler("orange")
+        document.getElementById("red").onclick = coloHandler("red")
+
+
+
+    </script>
+</html>
